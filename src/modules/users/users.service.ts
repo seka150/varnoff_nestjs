@@ -4,11 +4,16 @@ import { User } from './models/user.model';
 import * as bcrypt from 'bcrypt'
 import { CreateUserDTO, UpdateUserDTO } from './dto';
 import { Watchlist } from '../watchlist/models/watchlist.model';
+import { AuthUserResponse } from '../auth/response';
+import { TokenService } from '../token/token.service';
 
 
 @Injectable()
 export class UserService {
-    constructor(@InjectModel(User) private readonly userRepository: typeof User) {}
+    constructor(
+        @InjectModel(User) private readonly userRepository: typeof User,
+        private readonly tokenService: TokenService
+        ) {}
 
     async hashPassword (password: string): Promise<string> {
         try {
@@ -42,9 +47,9 @@ export class UserService {
         }
     }
 
-    async publicUser (email: string): Promise<User> {
+    async publicUser (email: string): Promise<AuthUserResponse> {
         try {
-            return this.userRepository.findOne({
+        const user =  await this.userRepository.findOne({
                 where : {email},
                 attributes: {exclude: ['password']},
                 include: {
@@ -52,6 +57,8 @@ export class UserService {
                     required: false
                 }
             })
+            const token = await this.tokenService.generateJwtToken(user)
+            return { user , token}
         } catch (error) {
             throw new Error(error)
         }
