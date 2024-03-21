@@ -1,84 +1,113 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/sequelize';
-import { User } from './models/user.model';
-import * as bcrypt from 'bcrypt'
-import { CreateUserDTO, UpdateUserDTO } from './dto';
-import { Watchlist } from '../watchlist/models/watchlist.model';
-import { AuthUserResponse } from '../auth/response';
-import { TokenService } from '../token/token.service';
-
+import { BadRequestException, Injectable } from "@nestjs/common";
+import { InjectModel } from "@nestjs/sequelize";
+import { User } from "./models/user.model";
+import * as bcrypt from "bcrypt";
+import { CreateUserDTO, UpdatePasswordDTO, UpdateUserDTO } from "./dto";
+import { Watchlist } from "../watchlist/models/watchlist.model";
+import { TokenService } from "../token/token.service";
+import { AuthUserResponse } from "../auth/response";
+import { AppError } from "../../common/constants/errors";
 
 @Injectable()
-export class UserService {
+    export class UsersService {
     constructor(
         @InjectModel(User) private readonly userRepository: typeof User,
         private readonly tokenService: TokenService
-        ) {}
+    ) {
+    }
 
-    async hashPassword (password: string): Promise<string> {
+    async hashPassword(password: string): Promise<string> {
         try {
-            return bcrypt.hash (password, 10)
-        } catch (error) {
-            throw new Error(error)
+        return bcrypt.hash(password, 10);
+        }catch (e) {
+        throw new Error(e)
         }
     }
 
-    async findUserByEmail (email: string): Promise<User> { 
+    async findUserByEmail(email: string): Promise<User> {
         try {
-            return this.userRepository.findOne({where: {email}});
-        } catch (error) {
-            throw new Error(error)
+        return this.userRepository.findOne({ where: { email: email }, include: {
+            model: Watchlist,
+            required: false,
+            } });
+        }catch (e) {
+        throw new Error(e)
         }
     }
 
-
-    async createUser(dto : CreateUserDTO): Promise<CreateUserDTO> {
+    async findUserById(id: number): Promise<User> {
         try {
-            dto.password = await this.hashPassword(dto.password);
+        return this.userRepository.findOne({ where: { id }, include: {
+            model: Watchlist,
+            required: false,
+            } });
+        }catch (e) {
+        throw new Error(e)
+        }
+    }
+
+    async createUser(dto: CreateUserDTO): Promise<CreateUserDTO> {
+        try {
+        dto.password = await this.hashPassword(dto.password);
         await this.userRepository.create({
             firstName: dto.firstName,
             username: dto.username,
-            email : dto.email,
+            email: dto.email,
             password: dto.password
         });
+        return dto;
+        }catch (e) {
+        throw new Error(e)
+        }
+    }
+
+    async publicUser (email: string): Promise<AuthUserResponse>{
+        try {
+        const user = await this.userRepository.findOne({
+            where: {email},
+            attributes: {exclude: ['password']},
+            include: {
+            model: Watchlist,
+            required: false
+            }
+        })
+        const token = await this.tokenService.generateJwtToken(user)
+        return { user, token}
+        }catch (e) {
+        throw new Error(e)
+        }
+    }
+
+    async updateUser (userId: number, dto: UpdateUserDTO): Promise<UpdateUserDTO> {
+        try {
+        await this.userRepository.update(dto, {where: {id: userId}})
         return dto
-        } catch (error) {
-            throw new Error(error)
+        }catch (e) {
+        throw new Error(e)
         }
     }
 
-    async publicUser (email: string): Promise<AuthUserResponse> {
+    async updatePassword (userId: number, dto: UpdatePasswordDTO): Promise<any> {
         try {
-        const user =  await this.userRepository.findOne({
-                where : {email},
-                attributes: {exclude: ['password']},
-                include: {
-                    model: Watchlist,
-                    required: false
-                }
-            })
-            const token = await this.tokenService.generateJwtToken(user)
-            return { user , token}
-        } catch (error) {
-            throw new Error(error)
+        const {password} = await this.findUserById(userId)
+        const currentPassword = await bcrypt.compare(dto.oldPassword, password)
+        if (!currentPassword) return new BadRequestException(AppError.WRONG_DATA)
+        const newPassword = await this.hashPassword(dto.newPassword)
+        const data = {
+            password: newPassword
+        }
+        return this.userRepository.update(data, {where: {id: userId}})
+        }catch (e) {
+        throw new Error(e)
         }
     }
 
-    async updateUser (email: string, dto: UpdateUserDTO): Promise<UpdateUserDTO> {
+    async deleteUser (id: number): Promise<boolean> {
         try {
-            await this.userRepository.update(dto, {where: {email}})
-        return dto
-        } catch (error) {
-            throw new Error(error)
-        }
-    }
-
-    async deleteUser (email: string): Promise<boolean> {
-        try {
-            await this.userRepository.destroy({where: {email}})
+        await this.userRepository.destroy({where: {id}})
         return true
-        } catch (error) {
-            throw new Error(error)
+        }catch (e) {
+        throw new Error(e)
         }
     }
-}
+    }

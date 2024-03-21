@@ -1,5 +1,5 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { UserService } from '../users/users.service';
+import { UsersService } from '../users/users.service';
 import { CreateUserDTO } from '../users/dto';
 import { AppError } from 'src/common/constants/errors';
 import { UserLoginDTO } from './dto';
@@ -9,7 +9,7 @@ import { AuthUserResponse } from './response';
 @Injectable()
 export class AuthService {
     constructor (
-        private readonly userService: UserService
+        private readonly userService: UsersService
         ) {}
 
     async registerUsers (dto: CreateUserDTO): Promise<AuthUserResponse> {
