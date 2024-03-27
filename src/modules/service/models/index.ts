@@ -1,14 +1,17 @@
-import { Column, HasMany, Model, Table } from "sequelize-typescript";
-import { Watchlist } from "../../watchlist/models/watchlist.model";
+import { Column, Model, Table, HasMany } from "sequelize-typescript";
+import { CreateSites } from "src/modules/create-sites/models";
 
 @Table
-export class Service extends Model{
+export class Service extends Model<Service> {
     @Column
-    name: string
+    name: string;
 
     @Column
-    description: string
+    description: string;
 
     @Column
-    price: number
+    price: number;
+
+    @HasMany(() => CreateSites)
+    createSites: CreateSites[];
 }

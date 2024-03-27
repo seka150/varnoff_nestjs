@@ -10,8 +10,12 @@ import { AuthModule } from '../auth/auth.module';
 import { TokenModule } from '../token/token.module';
 import { WatchlistModule } from '../watchlist/watchlist.module';
 import { Watchlist } from '../watchlist/models/watchlist.model';
-import { Service } from '../service/models';
 import { ServiceModule } from '../service/service.module';
+import { CreateSitesModule } from '../create-sites/create-sites.module';
+import { Service } from '../service/models';
+import { CreateSites } from '../create-sites/models';
+
+
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -30,14 +34,15 @@ import { ServiceModule } from '../service/service.module';
       database: configService.get('db_name'),
       synchronize: true,
       autoLoadModels: true,
-      models: [User, Watchlist,Service]
+      models: [User, Watchlist, Service, CreateSites]
     })
   }),
   UsersModule,
   AuthModule,
   TokenModule,
   WatchlistModule,
-  ServiceModule
+  ServiceModule,
+  CreateSitesModule
 ],
   controllers: [AppController],
   providers: [AppService],
