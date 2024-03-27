@@ -14,6 +14,10 @@ import { ServiceModule } from '../service/service.module';
 import { CreateSitesModule } from '../create-sites/create-sites.module';
 import { Service } from '../service/models';
 import { CreateSites } from '../create-sites/models';
+import { Domen } from '../domen/models';
+import { DomenModule } from '../domen/domen.module';
+import { Host } from '../host/model.ts';
+import { HostModule } from '../host/host.module';
 
 
 
@@ -34,7 +38,7 @@ import { CreateSites } from '../create-sites/models';
       database: configService.get('db_name'),
       synchronize: true,
       autoLoadModels: true,
-      models: [User, Watchlist, Service, CreateSites]
+      models: [User, Watchlist, Service, CreateSites, Domen, Host]
     })
   }),
   UsersModule,
@@ -42,7 +46,9 @@ import { CreateSites } from '../create-sites/models';
   TokenModule,
   WatchlistModule,
   ServiceModule,
-  CreateSitesModule
+  CreateSitesModule,
+  DomenModule,
+  HostModule
 ],
   controllers: [AppController],
   providers: [AppService],

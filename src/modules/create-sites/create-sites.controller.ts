@@ -14,7 +14,7 @@ export class CreateSitesController {
     @UseGuards(JwtAuthGuard)
     @Patch('update/:id')
     updateSites(@Param('id') id: number, @Body() updateDto: UpdateSitesDTO): Promise<UpdateSitesDTO> {
-    return this.createSitesService.updateService(id, updateDto); 
+    return this.createSitesService.updateSiteService(id, updateDto); 
 }
 
     @ApiTags("API")
@@ -22,13 +22,13 @@ export class CreateSitesController {
     @UseGuards(JwtAuthGuard)
     @Post('create')
     createSites(@Body() createDto: CreateSitesDTO): Promise<CreateSitesDTO> {
-        return this.createSitesService.createService(createDto);
+        return this.createSitesService.createSiteService(createDto);
     }
 
     @UseGuards(JwtAuthGuard)
     @Delete('delete/:id')
     deleteService (@Param('id') id: number): Promise<boolean>  {
-    return this.createSitesService.deleteService(id);
+    return this.createSitesService.deleteSiteService(id);
 }
 
     @ApiTags('API')
@@ -36,7 +36,7 @@ export class CreateSitesController {
     @UseGuards(JwtAuthGuard)
     @Get('get')
     async getServices(): Promise<AllCreateSitesResponse> {
-        const sites = await this.createSitesService.publicService();
+        const sites = await this.createSitesService.publicSiteService();
         return sites;
     }
 

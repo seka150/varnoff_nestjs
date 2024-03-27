@@ -10,7 +10,7 @@ export class CreateSitesService {
         @InjectModel(CreateSites) private readonly sitesRepository: typeof CreateSites,
     ) {}
 
-    async createService(dto: CreateSitesDTO): Promise<CreateSitesDTO> {
+    async createSiteService(dto: CreateSitesDTO): Promise<CreateSitesDTO> {
         try {
             const createdSite = await this.sitesRepository.create({
                 title: dto.title,
@@ -25,7 +25,7 @@ export class CreateSitesService {
         }
     }
 
-    async publicService(): Promise<AllCreateSitesResponse> {
+    async publicSiteService(): Promise<AllCreateSitesResponse> {
         try {
             const sites = await this.sitesRepository.findAll();
             const sitesResponses: CreateSitesResponse[] = sites.map(site => ({
@@ -39,7 +39,7 @@ export class CreateSitesService {
         }
     }
 
-    async updateService(sitesId: number, dto: UpdateSitesDTO): Promise<UpdateSitesDTO> {
+    async updateSiteService(sitesId: number, dto: UpdateSitesDTO): Promise<UpdateSitesDTO> {
         try {
             await this.sitesRepository.update(dto, { where: { id: sitesId } });
             return dto;
@@ -48,7 +48,7 @@ export class CreateSitesService {
         }
     }
 
-    async deleteService(id: number): Promise<boolean> {
+    async deleteSiteService(id: number): Promise<boolean> {
         try {
             await this.sitesRepository.destroy({ where: { id } });
             return true;
