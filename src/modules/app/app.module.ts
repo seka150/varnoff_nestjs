@@ -16,8 +16,16 @@ import { Service } from '../service/models';
 import { CreateSites } from '../create-sites/models';
 import { Domen } from '../domen/models';
 import { DomenModule } from '../domen/domen.module';
-import { Host } from '../host/model.ts';
+import { Host } from '../host/models';
 import { HostModule } from '../host/host.module';
+import { RentServer } from '../rent-server/models';
+import { RentServerModule } from '../rent-server/rent-server.module';
+import { RentVps } from '../rent-vps/models';
+import { RentVpsModule } from '../rent-vps/rent-vps.module';
+import { Promotion } from '../promotion-site/models';
+import { PromotionModule } from '../promotion-site/promotion.module';
+import { SSL } from '../ssl/models';
+import { SslModule } from '../ssl/ssl.module';
 
 
 
@@ -38,7 +46,7 @@ import { HostModule } from '../host/host.module';
       database: configService.get('db_name'),
       synchronize: true,
       autoLoadModels: true,
-      models: [User, Watchlist, Service, CreateSites, Domen, Host]
+      models: [User, Watchlist, Service, CreateSites, Domen, Host, RentServer, RentVps, Promotion, SSL]
     })
   }),
   UsersModule,
@@ -48,7 +56,11 @@ import { HostModule } from '../host/host.module';
   ServiceModule,
   CreateSitesModule,
   DomenModule,
-  HostModule
+  HostModule,
+  RentServerModule,
+  RentVpsModule,
+  PromotionModule,
+  SslModule
 ],
   controllers: [AppController],
   providers: [AppService],

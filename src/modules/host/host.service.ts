@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { Host } from './model.ts';
+import { Host } from './models/index.js';
 import { HostDTO, UpdateHostDTO } from './dto';
 import { AllHostResponse, HostResponse } from './response/index.js';
 
