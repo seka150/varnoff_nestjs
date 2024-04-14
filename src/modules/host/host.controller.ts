@@ -5,7 +5,7 @@ import { JwtAuthGuard } from 'src/guards/jwt-guard';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AllHostResponse } from './response';
 
-@Controller('host')
+@Controller('service/host')
 export class HostController {
     constructor(private readonly hostService: HostService) {}
 

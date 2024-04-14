@@ -5,7 +5,7 @@ import { RentServerService } from './rent-server.service';
 import { JwtAuthGuard } from 'src/guards/jwt-guard';
 import { AllRentServerResponse } from './response';
 
-@Controller('rent-server')
+@Controller('service/rent-server')
 export class RentServerController {
     constructor(private readonly rentServerService: RentServerService) {}
 

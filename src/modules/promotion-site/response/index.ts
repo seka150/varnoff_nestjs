@@ -25,6 +25,10 @@ export class PromotionResponse {
     @ApiProperty()
     @IsString()
     partner: string
+
+    @ApiProperty()
+    @IsNumber()
+    serviceId: number;
 }
 
 export class AllPromotionResponse {

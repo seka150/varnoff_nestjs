@@ -13,6 +13,10 @@ export class CreateSeviceDTO {
     @ApiProperty()
     @IsNumber()
     price: number
+
+    @ApiProperty()
+    @IsNumber()
+    url: string
 }
 
 export class UpdateServiceDTO {

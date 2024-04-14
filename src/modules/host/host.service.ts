@@ -35,6 +35,7 @@ export class HostService {
                 comfort:services.comfort,
                 perfect: services.perfect,
                 exclusive:services.exclusive,
+                serviceId: services.serviceId
             }));
             return { services: hostResponses }; 
         } catch (error) {

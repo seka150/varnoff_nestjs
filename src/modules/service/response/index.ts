@@ -13,6 +13,10 @@ export class ServiceResponse {
     @ApiProperty()
     @IsNumber()
     price: number;
+
+    @ApiProperty()
+    @IsString()
+    url: string
 }
 
 export class AllServiceResponse {

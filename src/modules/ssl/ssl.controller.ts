@@ -5,7 +5,7 @@ import { JwtAuthGuard } from 'src/guards/jwt-guard';
 import { SSLDTO, UpdateSSLDTO } from './dto';
 import { AllSSLResponse } from './response';
 
-@Controller('ssl')
+@Controller('service/ssl')
 export class SSLController {
     constructor(private readonly SslService: SslService){}
 

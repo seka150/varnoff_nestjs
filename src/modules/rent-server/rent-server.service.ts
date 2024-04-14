@@ -30,6 +30,7 @@ export class RentServerService {
             const RentServerResponse: RentServerResponse[] = rentServer.map(services => ({
                 title: services.title,
                 description:services.description,
+                serviceId: services.serviceId
             }));
             return { services:  RentServerResponse}; 
         } catch (error) {

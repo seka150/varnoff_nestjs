@@ -5,7 +5,7 @@ import { RentVpsDTO, UpdateRentVpsDTO } from './dto';
 import { JwtAuthGuard } from 'src/guards/jwt-guard';
 import { AllRentVpsResponse } from './response';
 
-@Controller('rent-vps')
+@Controller('service/rent-vps')
 export class RentVpsController {
     constructor(private readonly rentVpsService: RentVpsService) {}
 

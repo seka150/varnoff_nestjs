@@ -13,6 +13,10 @@ export class DomenResponse {
     @ApiProperty()
     @IsNumber()
     continue: number;
+
+    @ApiProperty()
+    @IsNumber()
+    serviceId: number;
 }
 
 export class AllDomenResponse {

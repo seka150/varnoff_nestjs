@@ -6,7 +6,7 @@ import { PromotionDTO, UpdatePromotionDTO } from "./dto";
 import { AllPromotionResponse } from "./response";
 
 
-@Controller('promotion')
+@Controller('service/promotion')
 export class PromotionController {
     constructor(private readonly promotionService: PromotionService) {}
 

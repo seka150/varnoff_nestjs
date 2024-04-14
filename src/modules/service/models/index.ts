@@ -12,6 +12,9 @@ export class Service extends Model<Service> {
     @Column
     price: number;
 
+    @Column
+    url: string
+
     @HasMany(() => CreateSites)
     createSites: CreateSites[];
 }

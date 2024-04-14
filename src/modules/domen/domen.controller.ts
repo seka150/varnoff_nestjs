@@ -5,7 +5,7 @@ import { DomenDTO, UpdateDomenDTO } from './dto';
 import { JwtAuthGuard } from 'src/guards/jwt-guard';
 import { AllDomenResponse } from './response';
 
-@Controller('domen')
+@Controller('service/domen')
 export class DomenController {
     constructor(private readonly domenService: DomenService) {}
 

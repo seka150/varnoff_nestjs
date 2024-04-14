@@ -13,6 +13,10 @@ export class SSLResponse {
     @ApiProperty()
     @IsNumber()
     price: number;
+
+    @ApiProperty()
+    @IsNumber()
+    serviceId: number;
 }
 
 export class AllSSLResponse {

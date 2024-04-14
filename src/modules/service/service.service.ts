@@ -16,6 +16,7 @@ export class ServiceService {
             name: dto.name,
             description: dto.description,
             price: dto.price,
+            url: dto.url
         });
         return dto;
         }catch (e) {
@@ -29,7 +30,8 @@ export class ServiceService {
             const serviceResponses: ServiceResponse[] = services.map(service => ({
                 name: service.name,
                 description: service.description,
-                price: service.price
+                price: service.price,
+                url: service.url
             }));
             return { services: serviceResponses }; 
         } catch (error) {

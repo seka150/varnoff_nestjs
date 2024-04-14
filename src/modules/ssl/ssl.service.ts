@@ -32,6 +32,7 @@ export class SslService {
                 title: site.title,
                 description: site.description,
                 price: site.price,
+                serviceId: site.serviceId
             }));
             return { services: sslResponses }; 
         } catch (error) {

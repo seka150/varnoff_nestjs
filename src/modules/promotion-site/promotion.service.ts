@@ -37,6 +37,7 @@ export class PromotionService {
                 profi: services.profi,
                 lider:services.lider,
                 partner: services.partner,
+                serviceId: services.serviceId
             }));
             return { services: promotionResponses }; 
         } catch (error) {

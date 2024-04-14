@@ -32,6 +32,7 @@ export class CreateSitesService {
                 title: site.title,
                 description: site.description,
                 price: site.price,
+                serviceId: site.serviceId
             }));
             return { services: sitesResponses }; 
         } catch (error) {

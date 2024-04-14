@@ -5,7 +5,7 @@ import { JwtAuthGuard } from 'src/guards/jwt-guard';
 import { CreateSitesDTO, UpdateSitesDTO } from './dto';
 import { AllCreateSitesResponse } from './response';
 
-@Controller('create-sites')
+@Controller('service/create-sites')
 export class CreateSitesController {
     constructor(private readonly createSitesService: CreateSitesService){}
 

@@ -37,6 +37,10 @@ export class RentVpsResponse {
     @ApiProperty()
     @IsString()
     option: string
+
+    @ApiProperty()
+    @IsNumber()
+    serviceId: number;
 }
 
 export class AllRentVpsResponse {

@@ -31,6 +31,7 @@ export class DomenService {
                 zone: services.zone,
                 register: services.register,
                 continue: services.continue,
+                serviceId: services.serviceId
             }));
             return { services: domenResponses }; 
         } catch (error) {

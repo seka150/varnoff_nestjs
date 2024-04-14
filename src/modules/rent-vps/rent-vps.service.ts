@@ -43,7 +43,8 @@ export class RentVpsService {
                 hdd: services.hdd,
                 os: services.os,
                 cPanel: services.cPanel,
-                option: services.option
+                option: services.option,
+                serviceId: services.serviceId
                 
             }));
             return { services: rentVpsResponse }; 

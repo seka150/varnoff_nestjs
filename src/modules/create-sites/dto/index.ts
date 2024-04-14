@@ -22,7 +22,7 @@ export class CreateSitesDTO {
 export class UpdateSitesDTO {
     @ApiProperty()
     @IsString()
-    name: string
+    title: string
 
     @ApiProperty()
     @IsString()
@@ -31,4 +31,8 @@ export class UpdateSitesDTO {
     @ApiProperty()
     @IsNumber()
     price: number
+
+    @ApiProperty()
+    @IsNumber()
+    serviceId: number
 }
