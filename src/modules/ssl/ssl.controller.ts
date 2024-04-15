@@ -4,6 +4,9 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/guards/jwt-guard';
 import { SSLDTO, UpdateSSLDTO } from './dto';
 import { AllSSLResponse } from './response';
+import { RolesGuard } from 'src/guards/role-guard';
+import { UserRole } from '../users/models/user.model';
+import { Roles } from 'src/common/decorator';
 
 @Controller('service/ssl')
 export class SSLController {
@@ -11,7 +14,8 @@ export class SSLController {
 
     @ApiTags("API")
     @ApiResponse({ status: 200, type: UpdateSSLDTO })
-    @UseGuards(JwtAuthGuard)
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles(UserRole.ADMIN)
     @Patch('update/:id')
     updateSsl(@Param('id') id: number, @Body() updateDto: UpdateSSLDTO): Promise<UpdateSSLDTO> {
     return this.SslService.updateSsl(id, updateDto); 
@@ -19,13 +23,15 @@ export class SSLController {
 
     @ApiTags("API")
     @ApiResponse({ status: 201, type: SSLDTO })
-    @UseGuards(JwtAuthGuard)
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles(UserRole.ADMIN)
     @Post('create')
     createSites(@Body() createDto: SSLDTO): Promise<SSLDTO> {
         return this.SslService.createSSL(createDto);
     }
 
-    @UseGuards(JwtAuthGuard)
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles(UserRole.ADMIN)
     @Delete('delete/:id')
     deleteService (@Param('id') id: number): Promise<boolean>  {
     return this.SslService.deleteSsl(id);

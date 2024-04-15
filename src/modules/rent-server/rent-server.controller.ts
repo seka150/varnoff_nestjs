@@ -4,6 +4,9 @@ import { RentServerDTO, UpdateRentServerDTO } from './dto';
 import { RentServerService } from './rent-server.service';
 import { JwtAuthGuard } from 'src/guards/jwt-guard';
 import { AllRentServerResponse } from './response';
+import { RolesGuard } from 'src/guards/role-guard';
+import { UserRole } from '../users/models/user.model';
+import { Roles } from "src/common/decorator";
 
 @Controller('service/rent-server')
 export class RentServerController {
@@ -11,7 +14,8 @@ export class RentServerController {
 
     @ApiTags("API")
     @ApiResponse({ status: 200, type: UpdateRentServerDTO })
-    @UseGuards(JwtAuthGuard)
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles(UserRole.ADMIN)
     @Patch('update/:id')
     async updateRentServer(@Param('id') id: number, @Body() updateDto: UpdateRentServerDTO): Promise<UpdateRentServerDTO> {
         const updatedRentServer = await this.rentServerService.updateHost(id, updateDto);
@@ -20,13 +24,15 @@ export class RentServerController {
 
     @ApiTags("API")
     @ApiResponse({ status: 201, type: RentServerDTO })
-    @UseGuards(JwtAuthGuard)
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles(UserRole.ADMIN)
     @Post('create')
     domen(@Body() createDto: RentServerDTO): Promise<RentServerDTO> {
         return this.rentServerService.createRentServer(createDto);
     }
 
-    @UseGuards(JwtAuthGuard)
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles(UserRole.ADMIN)
     @Delete('delete/:id')
     deleteDomen (@Param('id') id: number): Promise<boolean>  {
     return this.rentServerService.deleteRentService(id);

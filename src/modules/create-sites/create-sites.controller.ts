@@ -4,6 +4,9 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/guards/jwt-guard';
 import { CreateSitesDTO, UpdateSitesDTO } from './dto';
 import { AllCreateSitesResponse } from './response';
+import { RolesGuard } from 'src/guards/role-guard';
+import { UserRole } from '../users/models/user.model';
+import { Roles } from 'src/common/decorator';
 
 @Controller('service/create-sites')
 export class CreateSitesController {
@@ -11,7 +14,8 @@ export class CreateSitesController {
 
     @ApiTags("API")
     @ApiResponse({ status: 200, type: UpdateSitesDTO })
-    @UseGuards(JwtAuthGuard)
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles(UserRole.ADMIN)
     @Patch('update/:id')
     updateSites(@Param('id') id: number, @Body() updateDto: UpdateSitesDTO): Promise<UpdateSitesDTO> {
     return this.createSitesService.updateSiteService(id, updateDto); 
@@ -19,13 +23,15 @@ export class CreateSitesController {
 
     @ApiTags("API")
     @ApiResponse({ status: 201, type: CreateSitesDTO })
-    @UseGuards(JwtAuthGuard)
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles(UserRole.ADMIN)
     @Post('create')
     createSites(@Body() createDto: CreateSitesDTO): Promise<CreateSitesDTO> {
         return this.createSitesService.createSiteService(createDto);
     }
 
-    @UseGuards(JwtAuthGuard)
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles(UserRole.ADMIN)
     @Delete('delete/:id')
     deleteService (@Param('id') id: number): Promise<boolean>  {
     return this.createSitesService.deleteSiteService(id);
