@@ -24,7 +24,7 @@ export class PromotionService {
 
             return createdPromotion.toJSON() as PromotionDTO;
         } catch (error) {
-            throw new Error('Failed to create site.');
+            throw new Error('Failed to create promotion.');
         }
     }
     async publicPromotion(): Promise<AllPromotionResponse> {

@@ -26,6 +26,8 @@ import { Promotion } from '../promotion-site/models';
 import { PromotionModule } from '../promotion-site/promotion.module';
 import { SSL } from '../ssl/models';
 import { SslModule } from '../ssl/ssl.module';
+import { Order } from '../order/model';
+import { OrderModule } from '../order/order.module';
 
 
 
@@ -46,7 +48,7 @@ import { SslModule } from '../ssl/ssl.module';
       database: configService.get('db_name'),
       synchronize: true,
       autoLoadModels: true,
-      models: [User, Watchlist, Service, CreateSites, Domen, Host, RentServer, RentVps, Promotion, SSL]
+      models: [User, Watchlist, Service, CreateSites, Domen, Host, RentServer, RentVps, Promotion, SSL, Order]
     })
   }),
   UsersModule,
@@ -60,7 +62,8 @@ import { SslModule } from '../ssl/ssl.module';
   RentServerModule,
   RentVpsModule,
   PromotionModule,
-  SslModule
+  SslModule,
+  OrderModule
 ],
   controllers: [AppController],
   providers: [AppService],
