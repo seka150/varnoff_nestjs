@@ -1,4 +1,5 @@
 import { Column, Model, Table, ForeignKey, BelongsTo } from "sequelize-typescript";
+import { Order } from "src/modules/order/model";
 import { Service } from "src/modules/service/models";
 
 @Table

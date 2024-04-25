@@ -2,9 +2,14 @@ import { ApiProperty } from "@nestjs/swagger";
 import { IsNumber, IsString } from "class-validator";
 
 export class OrderResponse {
+
     @ApiProperty()
     @IsString()
-    status: string
+    title: string
+
+    @ApiProperty()
+    @IsString()
+    description: string
 
     @ApiProperty()
     @IsNumber()
@@ -13,6 +18,10 @@ export class OrderResponse {
     @ApiProperty()
     @IsNumber()
     serviceId: number;
+
+    @ApiProperty()
+    @IsNumber()
+    statusId: number;
 }
 
 export class AllOrderResponse {

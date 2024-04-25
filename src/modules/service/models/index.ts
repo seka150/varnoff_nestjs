@@ -1,5 +1,6 @@
 import { Column, Model, Table, HasMany } from "sequelize-typescript";
 import { CreateSites } from "src/modules/create-sites/models";
+import { Order } from "src/modules/order/model";
 
 @Table
 export class Service extends Model<Service> {
@@ -17,4 +18,10 @@ export class Service extends Model<Service> {
 
     @HasMany(() => CreateSites)
     createSites: CreateSites[];
+
+    @HasMany(() => Order, {
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+    })
+    order: Order[];
 }
