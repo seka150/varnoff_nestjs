@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { OrderService } from './order.service';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { OrderDTO, UpdateOrderDTO } from './dto';
+import { OrderDTO, UpdateOrderDto } from './dto';
 import { JwtAuthGuard } from 'src/guards/jwt-guard';
 import { RolesGuard } from 'src/guards/role-guard';
 import { Roles } from 'src/common/decorator';
@@ -31,12 +31,11 @@ export class OrderController {
     }
 
     @ApiTags("API")
-    @ApiResponse({ status: 200, type: UpdateOrderDTO })
+    @ApiResponse({status: 200, type: UpdateOrderDto})
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Roles(UserRole.ADMIN)
     @Patch('update/:id')
-    async updateOrder(@Param('id') id: number, @Body() updateDto: UpdateOrderDTO): Promise<UpdateOrderDTO> {
-        const updatedOrder = await this.orderService.updateOrder(id, updateDto)
-        return updatedOrder;
+    updateOrder(@Param('id') id: number, @Body() updateDto: UpdateOrderDto): Promise<UpdateOrderDto> {
+        return this.orderService.updateOrder(id, updateDto);
     }
 }

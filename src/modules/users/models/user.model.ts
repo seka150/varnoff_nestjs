@@ -1,5 +1,5 @@
 import { Column, HasMany, Model, Table } from "sequelize-typescript";
-import { Watchlist } from "../../watchlist/models/watchlist.model";
+import { Order } from "src/modules/order/model";
 
 export enum UserRole {
   ADMIN = 'admin',
@@ -25,9 +25,9 @@ export class User extends Model {
   })
   role: UserRole;
 
-  @HasMany(() => Watchlist, {
+  @HasMany(() => Order, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
   })
-  watchlist: Watchlist[];
+  order: Order[];
 }

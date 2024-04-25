@@ -8,8 +8,6 @@ import configurations from 'src/configurations';
 import { User } from '../users/models/user.model';
 import { AuthModule } from '../auth/auth.module';
 import { TokenModule } from '../token/token.module';
-import { WatchlistModule } from '../watchlist/watchlist.module';
-import { Watchlist } from '../watchlist/models/watchlist.model';
 import { ServiceModule } from '../service/service.module';
 import { CreateSitesModule } from '../create-sites/create-sites.module';
 import { Service } from '../service/models';
@@ -28,6 +26,8 @@ import { SSL } from '../ssl/models';
 import { SslModule } from '../ssl/ssl.module';
 import { Order } from '../order/model';
 import { OrderModule } from '../order/order.module';
+import { Status } from '../status/models';
+import { StatusModule } from '../status/status.module';
 
 
 
@@ -48,13 +48,12 @@ import { OrderModule } from '../order/order.module';
       database: configService.get('db_name'),
       synchronize: true,
       autoLoadModels: true,
-      models: [User, Watchlist, Service, CreateSites, Domen, Host, RentServer, RentVps, Promotion, SSL, Order]
+      models: [User, Service, CreateSites, Domen, Host, RentServer, RentVps, Promotion, SSL, Order, Status]
     })
   }),
   UsersModule,
   AuthModule,
   TokenModule,
-  WatchlistModule,
   ServiceModule,
   CreateSitesModule,
   DomenModule,
@@ -63,7 +62,8 @@ import { OrderModule } from '../order/order.module';
   RentVpsModule,
   PromotionModule,
   SslModule,
-  OrderModule
+  OrderModule,
+  StatusModule
 ],
   controllers: [AppController],
   providers: [AppService],

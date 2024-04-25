@@ -3,10 +3,10 @@ import { InjectModel } from "@nestjs/sequelize";
 import { User } from "./models/user.model";
 import * as bcrypt from "bcrypt";
 import { CreateUserDTO, UpdatePasswordDTO, UpdateUserDTO } from "./dto";
-import { Watchlist } from "../watchlist/models/watchlist.model";
 import { TokenService } from "../token/token.service";
 import { AuthUserResponse } from "../auth/response";
 import { AppError } from "../../common/constants/errors";
+import { Order } from "../order/model";
 
 @Injectable()
     export class UsersService {
@@ -27,7 +27,7 @@ import { AppError } from "../../common/constants/errors";
     async findUserByEmail(email: string): Promise<User> {
         try {
         return this.userRepository.findOne({ where: { email: email }, include: {
-            model: Watchlist,
+            model: Order,
             required: false,
             } });
         }catch (e) {
@@ -38,7 +38,7 @@ import { AppError } from "../../common/constants/errors";
     async findUserById(id: number): Promise<User> {
         try {
         return this.userRepository.findOne({ where: { id }, include: {
-            model: Watchlist,
+            model: Order,
             required: false,
             } });
         }catch (e) {
@@ -67,7 +67,7 @@ import { AppError } from "../../common/constants/errors";
             where: {email},
             attributes: {exclude: ['password']},
             include: {
-            model: Watchlist,
+            model: Order,
             required: false
             }
         })
