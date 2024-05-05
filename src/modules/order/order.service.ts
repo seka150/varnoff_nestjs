@@ -25,29 +25,33 @@ export class OrderService {
         }
     }
 
-    async publicOrder(): Promise<AllOrderResponse> {
+    public async publicOrder(): Promise<AllOrderResponse> {
         try {
             const order = await this.orderRepository.findAll();
-            const orderResponses: OrderResponse[] = order.map(services => ({
-                title: services.title,
-                description: services.description,
-                userId: services.userId,
-                statusId: services.statusId,
-                serviceId: services.serviceId
+            const orderResponses: OrderResponse[] = order.map(orders => ({
+                id: orders.id,
+                title: orders.title,
+                description: orders.description,
+                userId: orders.userId,
+                statusId: orders.statusId,
+                serviceId: orders.serviceId
             }));
-            return {services: orderResponses};
+            return { orders: orderResponses };
         } catch (error) {
             throw new Error('Failed to get order')
         }
     }
 
+    
+
     async updateOrder(orderId: number, dto: UpdateOrderDto): Promise<UpdateOrderDto> {
         try {
-            await this.orderRepository.update(dto, {where: {id: orderId}})
-            return dto;
+            await this.orderRepository.update(dto, { where: { id: orderId } });
+            return dto; 
         } catch (error) {
-            throw new Error('Failed to update order')
+            throw new Error('Failed to update order');
         }
     }
+    
 }
 
