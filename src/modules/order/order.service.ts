@@ -42,8 +42,6 @@ export class OrderService {
         }
     }
 
-    
-
     async updateOrder(orderId: number, dto: UpdateOrderDto): Promise<UpdateOrderDto> {
         try {
             await this.orderRepository.update(dto, { where: { id: orderId } });

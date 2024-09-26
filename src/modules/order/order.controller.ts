@@ -22,8 +22,7 @@ export class OrderController {
 
     @ApiTags("API")
     @ApiResponse({status: 200, type: AllOrderResponse })
-    @UseGuards(JwtAuthGuard, RolesGuard)
-    @Roles(UserRole.ADMIN)
+    @UseGuards(JwtAuthGuard)
     @Get('get')
     async getOrder(): Promise <AllOrderResponse> {
         const order = await this.orderService.publicOrder();
