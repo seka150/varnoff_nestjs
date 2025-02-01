@@ -9,25 +9,27 @@ import { User } from '../users/models/user.model';
 import { AuthModule } from '../auth/auth.module';
 import { TokenModule } from '../token/token.module';
 import { ServiceModule } from '../service/service.module';
-import { CreateSitesModule } from '../create-sites/create-sites.module';
+import { CreateSitesModule } from '../navesHome/home.module';
 import { Service } from '../service/models';
-import { CreateSites } from '../create-sites/models';
-import { Domen } from '../domen/models';
-import { DomenModule } from '../domen/domen.module';
-import { Host } from '../host/models';
-import { HostModule } from '../host/host.module';
-import { RentServer } from '../rent-server/models';
-import { RentServerModule } from '../rent-server/rent-server.module';
-import { RentVps } from '../rent-vps/models';
-import { RentVpsModule } from '../rent-vps/rent-vps.module';
-import { Promotion } from '../promotion-site/models';
-import { PromotionModule } from '../promotion-site/promotion.module';
-import { SSL } from '../ssl/models';
-import { SslModule } from '../ssl/ssl.module';
+import { NavesHome } from '../navesHome/models';
+import { NavesBool } from '../navesPool/models';
+import { NavesBoolModule } from '../navesPool/pool.module';
+import { Conopies} from '../navesCanopies/models';
+import { ConopiesModule} from '../navesCanopies/conopies.module';
+import { Terrasa } from '../navesTerrasa/models';
+import { TerrasaModule } from '../navesTerrasa/terrasa.module';
+import { Parking } from '../navesParking/models';
+import { ParkingModule } from '../navesParking/parking.module';
+import { Besedka } from '../navesBesedka/models';
+import { BesedkaModule } from '../navesBesedka/besedka.module';
+import { NavesDacha } from '../navesDacha/models';
+import { NavesDachaModule } from '../navesDacha/dacha.module';
 import { Order } from '../order/model';
 import { OrderModule } from '../order/order.module';
 import { Status } from '../status/models';
 import { StatusModule } from '../status/status.module';
+import { Avto } from '../navesAvto/model';
+import { AvtoModule } from '../navesAvto/avto.module';
 
 
 
@@ -48,7 +50,7 @@ import { StatusModule } from '../status/status.module';
       database: configService.get('db_name'),
       synchronize: true,
       autoLoadModels: true,
-      models: [User, Service, CreateSites, Domen, Host, RentServer, RentVps, Promotion, SSL, Order, Status]
+      models: [User, Service, NavesHome, NavesBool, Conopies, Terrasa, Parking, Besedka, NavesDacha, Order, Status, Avto]
     })
   }),
   UsersModule,
@@ -56,14 +58,15 @@ import { StatusModule } from '../status/status.module';
   TokenModule,
   ServiceModule,
   CreateSitesModule,
-  DomenModule,
-  HostModule,
-  RentServerModule,
-  RentVpsModule,
-  PromotionModule,
-  SslModule,
+  NavesBoolModule,
+  ConopiesModule,
+  TerrasaModule,
+  ParkingModule,
+  BesedkaModule,
+  NavesDachaModule,
   OrderModule,
-  StatusModule
+  StatusModule, 
+  AvtoModule
 ],
   controllers: [AppController],
   providers: [AppService],
