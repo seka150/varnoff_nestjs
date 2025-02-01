@@ -1,10 +1,10 @@
 import { IsNumber, IsString } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 
-export class CreateSeviceDTO {
+export class TerrasaDTO {
     @ApiProperty()
     @IsString()
-    name: string
+    title: string
 
     @ApiProperty()
     @IsString()
@@ -15,14 +15,14 @@ export class CreateSeviceDTO {
     price: number
 
     @ApiProperty()
-    @IsString()
-    url: string
+    @IsNumber()
+    serviceId: number
 }
 
-export class UpdateServiceDTO {
+export class UpdateTerrasaDTO {
     @ApiProperty()
     @IsString()
-    name: string
+    title: string
 
     @ApiProperty()
     @IsString()

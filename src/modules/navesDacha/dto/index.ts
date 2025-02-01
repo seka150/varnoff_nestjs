@@ -1,10 +1,10 @@
 import { IsNumber, IsString } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 
-export class CreateSeviceDTO {
+export class NavesDachaDTO {
     @ApiProperty()
     @IsString()
-    name: string
+    title: string
 
     @ApiProperty()
     @IsString()
@@ -15,11 +15,11 @@ export class CreateSeviceDTO {
     price: number
 
     @ApiProperty()
-    @IsString()
-    url: string
+    @IsNumber()
+    serviceId: number
 }
 
-export class UpdateServiceDTO {
+export class UpdateNavesDachaDTO {
     @ApiProperty()
     @IsString()
     name: string

@@ -1,5 +1,5 @@
 import { Column, Model, Table, HasMany } from "sequelize-typescript";
-import { CreateSites } from "src/modules/create-sites/models";
+import { NavesHome } from "src/modules/navesHome/models";
 import { Order } from "src/modules/order/model";
 
 @Table
@@ -16,8 +16,8 @@ export class Service extends Model<Service> {
     @Column
     url: string
 
-    @HasMany(() => CreateSites)
-    createSites: CreateSites[];
+    @HasMany(() => NavesHome)
+    createSites: NavesHome[];
 
     @HasMany(() => Order, {
         onDelete: 'CASCADE',
