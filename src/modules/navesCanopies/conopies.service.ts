@@ -15,7 +15,8 @@ export class ConopiesService {
             const createdConopies = await this.conopiesRepository.create({
                 title: dto.title,
                 desc: dto.desc,
-                price:dto.price,
+                img:dto.img,
+                price: dto.price,
                 serviceId: dto.serviceId 
             });
 
@@ -30,7 +31,8 @@ export class ConopiesService {
             const conopiesResponses: ConopiesResponse[] = conopies.map(services => ({
                 title: services.title,
                 desc: services.desc,
-                price:services.price,
+                img:services.img,
+                price: services.price,
                 serviceId: services.serviceId
             }));
             return { services: conopiesResponses }; 

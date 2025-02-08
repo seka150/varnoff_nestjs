@@ -11,6 +11,9 @@ export class Conopies extends Model<Conopies> {
     desc: string;
 
     @Column
+    img: string;
+
+    @Column
     price: number;
 
     @ForeignKey(() => Service)

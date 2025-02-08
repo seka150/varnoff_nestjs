@@ -17,6 +17,10 @@ export class ServiceResponse {
     @ApiProperty()
     @IsString()
     url: string
+
+    @ApiProperty()
+    @IsString()
+    img: string
 }
 
 export class AllServiceResponse {

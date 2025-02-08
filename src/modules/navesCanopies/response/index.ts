@@ -11,6 +11,10 @@ export class ConopiesResponse {
     desc: string
 
     @ApiProperty()
+    @IsString()
+    img: string
+
+    @ApiProperty()
     @IsNumber()
     price: number
 

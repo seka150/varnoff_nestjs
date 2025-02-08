@@ -1,35 +1,37 @@
 import { Injectable } from '@nestjs/common';
-import { NavesBool } from './models';
+import { NavesPool } from './models';
 import { InjectModel } from '@nestjs/sequelize';
-import { NavesBoolDTO, UpdateNavesBoolDTO } from './dto';
-import { AllNavesBoolResponse, NavesBoolResponse} from './response';
+import { NavesPoolDTO, UpdateNavesPoolDTO } from './dto';
+import { AllNavesPoolResponse, NavesPoolResponse} from './response';
 
 @Injectable()
-export class NavesBoolService {
+export class NavesPoolService {
     constructor(
-        @InjectModel(NavesBool) private readonly navesBoolRepository: typeof NavesBool,
+        @InjectModel(NavesPool) private readonly navesBoolRepository: typeof NavesPool,
     ) {}
 
-    async createNavesBool(dto: NavesBoolDTO): Promise <NavesBoolDTO> {
+    async createNavesBool(dto: NavesPoolDTO): Promise <NavesPoolDTO> {
         try {
             const createdNavesDomen = await this.navesBoolRepository.create({
                 title: dto.title,
                 desc: dto.desc,
+                img: dto.img,
                 price: dto.price,
                 serviceId: dto.serviceId 
             });
 
-            return createdNavesDomen.toJSON() as NavesBoolDTO;
+            return createdNavesDomen.toJSON() as NavesPoolDTO;
         } catch (error) {
             throw new Error('Failed to create site.');
         }
     }
-    async publicNavesBool(): Promise<AllNavesBoolResponse> {
+    async publicNavesBool(): Promise<AllNavesPoolResponse> {
         try {
             const naves = await this.navesBoolRepository.findAll();
-            const navesResponses: NavesBoolResponse[] = naves.map(services => ({
+            const navesResponses: NavesPoolResponse[] = naves.map(services => ({
                 title: services.title,
                 desc: services.desc,
+                img: services.img,
                 price: services.price,
                 serviceId: services.serviceId
             }));
@@ -39,7 +41,7 @@ export class NavesBoolService {
         }
     }
 
-    async updateNavesBool(boolId: number, dto: UpdateNavesBoolDTO): Promise<UpdateNavesBoolDTO> {
+    async updateNavesBool(boolId: number, dto: UpdateNavesPoolDTO): Promise<UpdateNavesPoolDTO> {
         try {
             await this.navesBoolRepository.update(dto, { where: { id: boolId } });
             return dto;

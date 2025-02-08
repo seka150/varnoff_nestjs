@@ -11,6 +11,10 @@ export class NavesHomeDTO {
     description: string
 
     @ApiProperty()
+    @IsString()
+    img: string
+
+    @ApiProperty()
     @IsNumber()
     price: number
 
@@ -27,6 +31,10 @@ export class UpdateNavesHomeDTO {
     @ApiProperty()
     @IsString()
     description: string
+
+    @ApiProperty()
+    @IsString()
+    img: string
 
     @ApiProperty()
     @IsNumber()

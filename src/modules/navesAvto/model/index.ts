@@ -11,6 +11,9 @@ export class Avto extends Model<Avto> {
     description: string;
 
     @Column
+    img: string;
+
+    @Column
     price: number;
 
     @ForeignKey(() => Service)

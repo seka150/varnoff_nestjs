@@ -11,6 +11,10 @@ export class ParkingResponse {
     desc: string
 
     @ApiProperty()
+    @IsString()
+    img: string
+
+    @ApiProperty()
     @IsNumber()
     price: number
 

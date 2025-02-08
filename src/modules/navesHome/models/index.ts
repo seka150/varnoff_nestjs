@@ -11,7 +11,10 @@ export class NavesHome extends Model<NavesHome> {
     description: string;
 
     @Column
-    price: number;
+    img: string;
+
+    @Column
+    price:number;
 
     @ForeignKey(() => Service)
     @Column

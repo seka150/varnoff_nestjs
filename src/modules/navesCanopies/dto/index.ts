@@ -11,6 +11,10 @@ export class ConopiesDTO {
     desc: string
 
     @ApiProperty()
+    @IsString()
+    img: string
+    
+    @ApiProperty()
     @IsNumber()
     price: number
 
@@ -27,6 +31,10 @@ export class UpdateConopiesDTO {
     @ApiProperty()
     @IsString()
     desc: string
+
+    @ApiProperty()
+    @IsString()
+    img: string
 
     @ApiProperty()
     @IsNumber()

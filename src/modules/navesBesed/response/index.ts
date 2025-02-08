@@ -1,14 +1,14 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNumber, IsString } from "class-validator";
 
-export class NavesDachaResponse {
+export class BesedResponse {
     @ApiProperty()
     @IsString()
-    title: string;
+    title: string
 
     @ApiProperty()
     @IsString()
-    description: string;
+    desc: string
 
     @ApiProperty()
     @IsString()
@@ -23,7 +23,7 @@ export class NavesDachaResponse {
     serviceId: number;
 }
 
-export class AllNavesDachaResponse {
-    @ApiProperty({ type: [NavesDachaResponse] }) 
-    services: NavesDachaResponse[];
+export class AllBesedResponse {
+    @ApiProperty({ type: [BesedResponse] }) 
+    services: BesedResponse[];
 }

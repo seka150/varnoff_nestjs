@@ -11,6 +11,10 @@ export class AvtoResponse {
     description: string;
 
     @ApiProperty()
+    @IsString()
+    img: string;
+
+    @ApiProperty()
     @IsNumber()
     price: number;
 

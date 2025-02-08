@@ -15,6 +15,7 @@ export class NavesDachaService {
             const navesDacha = await this.navesDachaRepository.create({
                 title: dto.title,
                 description: dto.description,
+                img: dto.img,
                 price: dto.price,
                 serviceId: dto.serviceId 
             });
@@ -31,6 +32,7 @@ export class NavesDachaService {
             const NavesDachaResponse: NavesDachaResponse[] = dacha.map(site => ({
                 title: site.title,
                 description: site.description,
+                img: site.img,
                 price: site.price,
                 serviceId: site.serviceId
             }));

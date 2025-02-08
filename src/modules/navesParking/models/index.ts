@@ -11,7 +11,10 @@ export class Parking extends Model<Parking> {
     desc: string
 
     @Column
-    price: number
+    img: string
+
+    @Column
+    price: number;
 
     @ForeignKey(() => Service)
     @Column

@@ -1,7 +1,7 @@
 import { IsNumber, IsString } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 
-export class NavesBoolDTO {
+export class NavesPoolDTO {
     @ApiProperty()
     @IsString()
     title: string
@@ -9,6 +9,10 @@ export class NavesBoolDTO {
     @ApiProperty()
     @IsString()
     desc: string
+
+    @ApiProperty()
+    @IsString()
+    img: string
 
     @ApiProperty()
     @IsNumber()
@@ -19,7 +23,7 @@ export class NavesBoolDTO {
     serviceId: number
 }
 
-export class UpdateNavesBoolDTO {
+export class UpdateNavesPoolDTO {
     @ApiProperty()
     @IsString()
     title: string
@@ -27,6 +31,10 @@ export class UpdateNavesBoolDTO {
     @ApiProperty()
     @IsString()
     desc: string
+
+    @ApiProperty()
+    @IsString()
+    img: string
 
     @ApiProperty()
     @IsNumber()

@@ -11,8 +11,12 @@ export class NavesHomeResponse {
     description: string;
 
     @ApiProperty()
+    @IsString()
+    img: string;
+
+    @ApiProperty()
     @IsNumber()
-    price: number;
+    price: number
 
     @ApiProperty()
     @IsNumber()

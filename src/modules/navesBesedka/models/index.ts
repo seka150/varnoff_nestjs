@@ -10,6 +10,9 @@ export class Besedka extends Model<Besedka> {
     desc: string
 
     @Column
+    img: string
+
+    @Column
     price: number
 
     @ForeignKey(() => Service)

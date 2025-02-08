@@ -15,6 +15,7 @@ export class TerrasaService {
             const createdTerrasa = await this.terrasaRepository.create({
                 title: dto.title,
                 description: dto.description,
+                img: dto.img,
                 price: dto.price,
                 serviceId: dto.serviceId 
             });
@@ -31,6 +32,7 @@ export class TerrasaService {
             const TerrasaResponse: TerrasaResponse[] = terrasa.map(services => ({
                 title: services.title,
                 description:services.description,
+                img: services.img,
                 price: services.price,
                 serviceId: services.serviceId
             }));

@@ -11,6 +11,10 @@ export class TerrasaDTO {
     description: string
 
     @ApiProperty()
+    @IsString()
+    img: string
+
+    @ApiProperty()
     @IsNumber()
     price: number
 
@@ -27,6 +31,10 @@ export class UpdateTerrasaDTO {
     @ApiProperty()
     @IsString()
     description: string
+
+    @ApiProperty()
+    @IsString()
+    img: string
 
     @ApiProperty()
     @IsNumber()
