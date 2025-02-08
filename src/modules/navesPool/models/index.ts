@@ -3,12 +3,15 @@ import { Order } from "src/modules/order/model";
 import { Service } from "src/modules/service/models";
 
 @Table
-export class NavesBool extends Model<NavesBool> {
+export class NavesPool extends Model<NavesPool> {
     @Column
     title: string;
 
     @Column
     desc: string;
+
+    @Column
+    img: string;
 
     @Column
     price: number;

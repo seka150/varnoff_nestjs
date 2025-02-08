@@ -1,20 +1,19 @@
 import { Column, Model, Table, ForeignKey, BelongsTo } from "sequelize-typescript";
-import { Order } from "src/modules/order/model";
 import { Service } from "src/modules/service/models";
 
 @Table
-export class NavesDacha extends Model<NavesDacha> {
+export class Besed extends Model<Besed> {
     @Column
-    title: string;
+    title: string
 
     @Column
-    description: string;
+    desc: string
 
     @Column
-    img: string;
+    img: string
 
     @Column
-    price: number;
+    price: number
 
     @ForeignKey(() => Service)
     @Column

@@ -11,6 +11,9 @@ export class Terrasa extends Model<Terrasa> {
     description: string;
 
     @Column
+    img: string;
+
+    @Column
     price: number;
 
     @ForeignKey(() => Service)

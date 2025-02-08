@@ -16,6 +16,7 @@ export class NavesHomeService {
             const navesHome = await this.navesHomeRepository.create({
                 title: dto.title,
                 description: dto.description,
+                img: dto.img,
                 price: dto.price,
                 serviceId: dto.serviceId 
             });
@@ -29,11 +30,12 @@ export class NavesHomeService {
     async publicHomeService(): Promise<AllNavesHomeResponse> {
         try {
             const home = await this.navesHomeRepository.findAll();
-            const homeResponses: NavesHomeResponse[] = home.map(home => ({
-                title: home.title,
-                description: home.description,
-                price: home.price,
-                serviceId: home.serviceId
+            const homeResponses: NavesHomeResponse[] = home.map(service => ({
+                title: service.title,
+                description: service.description,
+                img: service.img,
+                price: service.price,
+                serviceId: service.serviceId
             }));
             return { services: homeResponses }; 
         } catch (error) {

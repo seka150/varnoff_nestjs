@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { NavesBoolController } from './pool.controller';
-import { NavesBoolService } from './pool.service';
+import { NavesPoolController } from './pool.controller';
+import { NavesPoolService } from './pool.service';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { NavesBool } from './models';
+import { NavesPool } from './models';
 
 @Module({
-  imports: [SequelizeModule.forFeature([NavesBool])],
-  controllers: [NavesBoolController],
-  providers: [NavesBoolService]
+  imports: [SequelizeModule.forFeature([NavesPool])],
+  controllers: [NavesPoolController],
+  providers: [NavesPoolService]
 })
-export class NavesBoolModule {}
+export class NavesPoolModule {}

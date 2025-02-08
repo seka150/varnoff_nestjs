@@ -1,42 +1,42 @@
 import { IsNumber, IsString } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 
-export class CreateSeviceDTO {
+export class BesedDTO {
     @ApiProperty()
     @IsString()
-    name: string
+    title: string
 
     @ApiProperty()
     @IsString()
-    description: string
+    desc: string
+
+    @ApiProperty()
+    @IsString()
+    img: string
 
     @ApiProperty()
     @IsNumber()
     price: number
 
     @ApiProperty()
-    @IsString()
-    url: string
-
-    @ApiProperty()
-    @IsString()
-    img: string
+    @IsNumber()
+    serviceId: number
 }
 
-export class UpdateServiceDTO {
+export class UpdateBesedDTO {
     @ApiProperty()
     @IsString()
-    name: string
+    title: string
 
     @ApiProperty()
     @IsString()
-    description: string
+    desc: string
+
+    @ApiProperty()
+    @IsString()
+    img: string
 
     @ApiProperty()
     @IsNumber()
     price: number
-    
-    @ApiProperty()
-    @IsString()
-    img: string
 }

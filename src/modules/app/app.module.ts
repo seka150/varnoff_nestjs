@@ -12,8 +12,8 @@ import { ServiceModule } from '../service/service.module';
 import { CreateSitesModule } from '../navesHome/home.module';
 import { Service } from '../service/models';
 import { NavesHome } from '../navesHome/models';
-import { NavesBool } from '../navesPool/models';
-import { NavesBoolModule } from '../navesPool/pool.module';
+import { NavesPool } from '../navesPool/models';
+import { NavesPoolModule } from '../navesPool/pool.module';
 import { Conopies} from '../navesCanopies/models';
 import { ConopiesModule} from '../navesCanopies/conopies.module';
 import { Terrasa } from '../navesTerrasa/models';
@@ -30,6 +30,8 @@ import { Status } from '../status/models';
 import { StatusModule } from '../status/status.module';
 import { Avto } from '../navesAvto/model';
 import { AvtoModule } from '../navesAvto/avto.module';
+import { Besed } from '../navesBesed/models';
+import { BesedModule } from '../navesBesed/besedka.module';
 
 
 
@@ -50,7 +52,7 @@ import { AvtoModule } from '../navesAvto/avto.module';
       database: configService.get('db_name'),
       synchronize: true,
       autoLoadModels: true,
-      models: [User, Service, NavesHome, NavesBool, Conopies, Terrasa, Parking, Besedka, NavesDacha, Order, Status, Avto]
+      models: [User, Service, NavesHome, NavesPool, Conopies, Terrasa, Parking, Besedka, NavesDacha, Order, Status, Avto, Besed]
     })
   }),
   UsersModule,
@@ -58,7 +60,7 @@ import { AvtoModule } from '../navesAvto/avto.module';
   TokenModule,
   ServiceModule,
   CreateSitesModule,
-  NavesBoolModule,
+  NavesPoolModule,
   ConopiesModule,
   TerrasaModule,
   ParkingModule,
@@ -66,7 +68,8 @@ import { AvtoModule } from '../navesAvto/avto.module';
   NavesDachaModule,
   OrderModule,
   StatusModule, 
-  AvtoModule
+  AvtoModule,
+  BesedModule
 ],
   controllers: [AppController],
   providers: [AppService],

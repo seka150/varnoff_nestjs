@@ -15,6 +15,7 @@ export class AvtoService {
             const avto = await this.avtoRepository.create({
                 title: dto.title,
                 description: dto.description,
+                img: dto.img,
                 price: dto.price,
                 serviceId: dto.serviceId 
             });
@@ -28,11 +29,12 @@ export class AvtoService {
     async publicAvto(): Promise<AllAvtoResponse> {
         try {
             const avto = await this.avtoRepository.findAll();
-            const avtoResponse: AvtoResponse[] = avto.map(vehicle => ({
-                title: vehicle.title,
-                description: vehicle.description,
-                price: vehicle.price,
-                serviceId: vehicle.serviceId
+            const avtoResponse: AvtoResponse[] = avto.map(services => ({
+                title: services.title,
+                description: services.description,
+                img: services.img,
+                price: services.price,
+                serviceId: services.serviceId
             }));
             return { services: avtoResponse }; 
         } catch (error) {

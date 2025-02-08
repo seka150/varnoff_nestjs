@@ -15,6 +15,7 @@ export class ParkingService {
             const createdParking = await this.parkingRepository.create({
                 title: dto.title,
                 desc: dto.desc,
+                img: dto.img,
                 price: dto.price,
                 serviceId: dto.serviceId 
             });
@@ -31,6 +32,7 @@ export class ParkingService {
             const parkingResponse: ParkingResponse[] = parking.map(services => ({
                 title: services.title,
                 desc: services.desc,
+                img: services.img,
                 price: services.price,
                 serviceId: services.serviceId
             }));

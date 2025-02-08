@@ -16,6 +16,9 @@ export class Service extends Model<Service> {
     @Column
     url: string
 
+    @Column
+    img: string
+
     @HasMany(() => NavesHome)
     createSites: NavesHome[];
 

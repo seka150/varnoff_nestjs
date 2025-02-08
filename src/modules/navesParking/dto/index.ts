@@ -11,6 +11,10 @@ export class ParkingDTO {
     desc: string
 
     @ApiProperty()
+    @IsString()
+    img: string
+
+    @ApiProperty()
     @IsNumber()
     price: number
 
@@ -28,6 +32,10 @@ export class UpdateParkingDTO {
     @IsString()
     desc: string
 
+    @ApiProperty()
+    @IsString()
+    img: string
+    
     @ApiProperty()
     @IsNumber()
     price: number

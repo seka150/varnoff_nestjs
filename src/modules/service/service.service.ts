@@ -16,7 +16,8 @@ export class ServiceService {
             name: dto.name,
             description: dto.description,
             price: dto.price,
-            url: dto.url
+            url: dto.url,
+            img: dto.img
         });
         return dto;
         }catch (e) {
@@ -31,7 +32,8 @@ export class ServiceService {
                 name: service.name,
                 description: service.description,
                 price: service.price,
-                url: service.url
+                url: service.url,
+                img: service.img
             }));
             return { services: serviceResponses }; 
         } catch (error) {

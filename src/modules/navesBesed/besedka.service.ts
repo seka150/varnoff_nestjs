@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { Besedka } from './models/index.js';
-import { BesedkaDTO, UpdateBesedkaDTO } from './dto/index.js';
-import { AllBesedkaResponse, BesedkaResponse } from './response/index.js';
+import { Besed } from './models/index.js';
+import { BesedDTO, UpdateBesedDTO } from './dto/index.js';
+import { AllBesedResponse, BesedResponse } from './response/index.js';
 
 @Injectable()
-export class BesedkaService {
+export class BesedService {
     constructor(
-        @InjectModel(Besedka) private readonly besedkaRepository: typeof Besedka,
+        @InjectModel(Besed) private readonly besedkaRepository: typeof Besed,
     ) {}
 
-    async createBesedka(dto: BesedkaDTO): Promise <BesedkaDTO> {
+    async createBesedka(dto: BesedDTO): Promise <BesedDTO> {
         try {
             const createdBesedka = await this.besedkaRepository.create({
                 title: dto.title,
@@ -20,15 +20,15 @@ export class BesedkaService {
                 serviceId: dto.serviceId 
             });
 
-            return createdBesedka.toJSON() as BesedkaDTO;
+            return createdBesedka.toJSON() as BesedDTO;
         } catch (error) {
             throw new Error('Failed to create besedka.');
         }
     }
-    async publicBesedka(): Promise<AllBesedkaResponse> {
+    async publicBesedka(): Promise<AllBesedResponse> {
         try {
             const besedka = await this.besedkaRepository.findAll();
-            const besedkaResponses: BesedkaResponse[] = besedka.map(services => ({
+            const besedkaResponses: BesedResponse[] = besedka.map(services => ({
                 title: services.title,
                 desc: services.desc,
                 img:services.img,
@@ -41,7 +41,7 @@ export class BesedkaService {
         }
     }
 
-    async updateBesedka(besedkaId: number, dto: UpdateBesedkaDTO): Promise<UpdateBesedkaDTO> {
+    async updateBesedka(besedkaId: number, dto: UpdateBesedDTO): Promise<UpdateBesedDTO> {
         try {
             await this.besedkaRepository.update(dto, { where: { id: besedkaId } });
             return dto;
