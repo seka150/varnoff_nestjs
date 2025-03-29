@@ -32,6 +32,8 @@ import { Avto } from '../navesAvto/model';
 import { AvtoModule } from '../navesAvto/avto.module';
 import { Besed } from '../navesBesed/models';
 import { BesedModule } from '../navesBesed/besedka.module';
+import { CoveringModule } from '../covering/cov.module';
+import { Covering } from '../covering/models';
 
 
 
@@ -52,7 +54,7 @@ import { BesedModule } from '../navesBesed/besedka.module';
       database: configService.get('db_name'),
       synchronize: true,
       autoLoadModels: true,
-      models: [User, Service, NavesHome, NavesPool, Conopies, Terrasa, Parking, Besedka, NavesDacha, Order, Status, Avto, Besed]
+      models: [User, Service, NavesHome, NavesPool, Conopies, Terrasa, Parking, Besedka, NavesDacha, Order, Status, Avto, Besed, Covering]
     })
   }),
   UsersModule,
@@ -69,7 +71,8 @@ import { BesedModule } from '../navesBesed/besedka.module';
   OrderModule,
   StatusModule, 
   AvtoModule,
-  BesedModule
+  BesedModule,
+  CoveringModule
 ],
   controllers: [AppController],
   providers: [AppService],

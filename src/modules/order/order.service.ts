@@ -14,10 +14,12 @@ export class OrderService {
         try {
             const createdOrder = await this.orderRepository.create({
                 userId: dto.userId,
-                title: dto.title,
-                description: dto.description,
+                length: dto.length,
+                height: dto.height,
+                width: dto.width,
                 statusId: dto.statusId,
-                serviceId: dto.serviceId
+                serviceId: dto.serviceId,
+                coveringId: dto.coveringId
             });
             return createdOrder.toJSON() as OrderDTO;
         } catch (error) {
@@ -30,11 +32,13 @@ export class OrderService {
             const order = await this.orderRepository.findAll();
             const orderResponses: OrderResponse[] = order.map(orders => ({
                 id: orders.id,
-                title: orders.title,
-                description: orders.description,
+                length: orders.length,
+                height: orders.height,
+                width: orders.width,
                 userId: orders.userId,
                 statusId: orders.statusId,
-                serviceId: orders.serviceId
+                serviceId: orders.serviceId,
+                coveringId: orders.coveringId
             }));
             return { orders: orderResponses };
         } catch (error) {

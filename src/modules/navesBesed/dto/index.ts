@@ -8,7 +8,7 @@ export class BesedDTO {
 
     @ApiProperty()
     @IsString()
-    desc: string
+    description: string
 
     @ApiProperty()
     @IsString()
@@ -30,7 +30,7 @@ export class UpdateBesedDTO {
 
     @ApiProperty()
     @IsString()
-    desc: string
+    description: string
 
     @ApiProperty()
     @IsString()

@@ -8,7 +8,7 @@ export class ParkingDTO {
 
     @ApiProperty()
     @IsString()
-    desc: string
+    description: string
 
     @ApiProperty()
     @IsString()
@@ -30,7 +30,7 @@ export class UpdateParkingDTO {
 
     @ApiProperty()
     @IsString()
-    desc: string
+    description: string
 
     @ApiProperty()
     @IsString()

@@ -8,7 +8,7 @@ import { RolesGuard } from 'src/guards/role-guard';
 import { UserRole } from '../users/models/user.model';
 import { Roles } from "src/common/decorator";
 
-@Controller('service/naves_terrasa')
+@Controller('service/Терраса с раздвижной крышей')
 export class TerrasaController {
     constructor(private readonly terrasaService: TerrasaService) {}
 

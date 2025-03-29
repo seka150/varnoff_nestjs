@@ -8,7 +8,7 @@ export class ConopiesDTO {
 
     @ApiProperty()
     @IsString()
-    desc: string
+    description: string
 
     @ApiProperty()
     @IsString()
@@ -30,7 +30,7 @@ export class UpdateConopiesDTO {
 
     @ApiProperty()
     @IsString()
-    desc: string
+    description: string
 
     @ApiProperty()
     @IsString()

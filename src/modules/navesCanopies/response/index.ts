@@ -8,7 +8,7 @@ export class ConopiesResponse {
 
     @ApiProperty()
     @IsString()
-    desc: string
+    description: string
 
     @ApiProperty()
     @IsString()

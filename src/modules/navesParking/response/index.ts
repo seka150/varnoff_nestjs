@@ -8,7 +8,7 @@ export class ParkingResponse {
 
     @ApiProperty()
     @IsString()
-    desc: string
+    description: string
 
     @ApiProperty()
     @IsString()

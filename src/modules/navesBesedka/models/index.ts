@@ -7,7 +7,7 @@ export class Besedka extends Model<Besedka> {
     title: string
 
     @Column
-    desc: string
+    description: string
 
     @Column
     img: string

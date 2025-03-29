@@ -8,7 +8,7 @@ export class BesedkaResponse {
 
     @ApiProperty()
     @IsString()
-    desc: string
+    description: string
 
     @ApiProperty()
     @IsString()

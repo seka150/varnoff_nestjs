@@ -14,7 +14,7 @@ export class ParkingService {
         try {
             const createdParking = await this.parkingRepository.create({
                 title: dto.title,
-                desc: dto.desc,
+                description: dto.description,
                 img: dto.img,
                 price: dto.price,
                 serviceId: dto.serviceId 
@@ -31,7 +31,7 @@ export class ParkingService {
             const parking = await this.parkingRepository.findAll();
             const parkingResponse: ParkingResponse[] = parking.map(services => ({
                 title: services.title,
-                desc: services.desc,
+                description: services.description,
                 img: services.img,
                 price: services.price,
                 serviceId: services.serviceId

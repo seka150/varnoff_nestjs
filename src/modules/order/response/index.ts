@@ -7,12 +7,16 @@ export class OrderResponse {
     id: number
 
     @ApiProperty()
-    @IsString()
-    title: string
+    @IsNumber()
+    length: number
 
     @ApiProperty()
-    @IsString()
-    description: string
+    @IsNumber()
+    width: number
+
+    @ApiProperty()
+    @IsNumber()
+    height: number
 
     @ApiProperty()
     @IsNumber()
@@ -21,6 +25,10 @@ export class OrderResponse {
     @ApiProperty()
     @IsNumber()
     serviceId: number;
+
+    @ApiProperty()
+    @IsNumber()
+    coveringId: number;
 
     @ApiProperty()
     @IsNumber()

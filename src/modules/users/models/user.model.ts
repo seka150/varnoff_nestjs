@@ -21,7 +21,7 @@ export class User extends Model {
   password: string;
 
   @Column({
-    defaultValue: UserRole.ADMIN, 
+    defaultValue: UserRole.USER, 
   })
   role: UserRole;
 

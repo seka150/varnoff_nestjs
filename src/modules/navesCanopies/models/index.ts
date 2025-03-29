@@ -8,7 +8,7 @@ export class Conopies extends Model<Conopies> {
     title: string;
 
     @Column
-    desc: string;
+    description: string;
 
     @Column
     img: string;

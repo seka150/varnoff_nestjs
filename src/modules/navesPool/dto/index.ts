@@ -8,7 +8,7 @@ export class NavesPoolDTO {
 
     @ApiProperty()
     @IsString()
-    desc: string
+    description: string
 
     @ApiProperty()
     @IsString()
@@ -30,7 +30,7 @@ export class UpdateNavesPoolDTO {
 
     @ApiProperty()
     @IsString()
-    desc: string
+    description: string
 
     @ApiProperty()
     @IsString()
