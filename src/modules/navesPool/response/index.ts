@@ -8,7 +8,7 @@ export class NavesPoolResponse {
 
     @ApiProperty()
     @IsString()
-    desc: string;
+    description: string;
 
     @ApiProperty()
     @IsString()

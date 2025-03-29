@@ -7,7 +7,7 @@ export class Besed extends Model<Besed> {
     title: string
 
     @Column
-    desc: string
+    description: string
 
     @Column
     img: string

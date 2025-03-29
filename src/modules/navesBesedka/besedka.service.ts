@@ -14,7 +14,7 @@ export class BesedkaService {
         try {
             const createdBesedka = await this.besedkaRepository.create({
                 title: dto.title,
-                desc: dto.desc,
+                description: dto.description,
                 img:dto.img,
                 price: dto.price,
                 serviceId: dto.serviceId 
@@ -30,7 +30,7 @@ export class BesedkaService {
             const besedka = await this.besedkaRepository.findAll();
             const besedkaResponses: BesedkaResponse[] = besedka.map(services => ({
                 title: services.title,
-                desc: services.desc,
+                description: services.description,
                 img:services.img,
                 price: services.price,
                 serviceId: services.serviceId

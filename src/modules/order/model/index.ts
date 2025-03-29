@@ -1,4 +1,5 @@
 import { BelongsTo, Column, ForeignKey, Model, Table } from "sequelize-typescript";
+import { Covering } from "src/modules/covering/models";
 import { Service } from "src/modules/service/models";
 import { Status } from "src/modules/status/models";
 import { User } from "src/modules/users/models/user.model";
@@ -6,10 +7,13 @@ import { User } from "src/modules/users/models/user.model";
 @Table
 export class Order extends Model<Order> {
     @Column
-    title: string;
+    length: number
 
     @Column
-    description: string;
+    width: number
+
+    @Column
+    height: number
 
     @ForeignKey(() => Status)
     @Column
@@ -23,6 +27,10 @@ export class Order extends Model<Order> {
     @Column
     serviceId: number;
 
+    @ForeignKey(() => Covering)
+    @Column
+    coveringId: number;
+
     @BelongsTo(() => User)
     user: User;
 
@@ -31,4 +39,7 @@ export class Order extends Model<Order> {
 
     @BelongsTo(() => Status)
     status: Status;
+
+    @BelongsTo(() => Covering)
+    covering: Covering;
 }

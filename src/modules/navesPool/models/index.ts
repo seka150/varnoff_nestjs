@@ -8,7 +8,7 @@ export class NavesPool extends Model<NavesPool> {
     title: string;
 
     @Column
-    desc: string;
+    description: string;
 
     @Column
     img: string;

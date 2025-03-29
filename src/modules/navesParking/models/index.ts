@@ -8,7 +8,7 @@ export class Parking extends Model<Parking> {
     title: string
 
     @Column
-    desc: string
+    description: string
 
     @Column
     img: string

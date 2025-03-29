@@ -3,16 +3,24 @@ import { ApiProperty } from "@nestjs/swagger";
 
 export class OrderDTO {
     @ApiProperty()
-    @IsString()
-    title: string
+    @IsNumber()
+    length: number
 
     @ApiProperty()
-    @IsString()
-    description: string
+    @IsNumber()
+    width: number
+
+    @ApiProperty()
+    @IsNumber()
+    height: number
 
     @ApiProperty()
     @IsNumber()
     userId: number
+
+    @ApiProperty()
+    @IsNumber()
+    coveringId: number
 
     @ApiProperty()
     @IsNumber()
