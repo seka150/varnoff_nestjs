@@ -24,7 +24,7 @@ export class CoveringController {
     @ApiTags("API")
     @ApiResponse({status: 200, type: AllCoveringResponse})
     @UseGuards(JwtAuthGuard, RolesGuard)
-    @Roles(UserRole.ADMIN)
+    @Roles(UserRole.USER)
     @Get('get')
     async getCovering(): Promise<AllCoveringResponse> {
         const cov = await this.covService.publicStatus();

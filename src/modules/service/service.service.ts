@@ -29,6 +29,7 @@ export class ServiceService {
         try {
             const services = await this.serviceRepository.findAll();
             const serviceResponses: ServiceResponse[] = services.map(service => ({
+                id: service.id,
                 name: service.name,
                 description: service.description,
                 price: service.price,

@@ -25,6 +25,7 @@ export class CoveringService {
         try {
             const cov = await this.covRepository.findAll();
             const covResponses: CoveringResponse[] = cov.map(data => ({
+                id: data.id,
                 type: data.type
             }));
             return {type: covResponses}

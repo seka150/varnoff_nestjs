@@ -5,4 +5,5 @@ export class CoveringDto {
     @ApiProperty()
     @IsString()
     type: string
+
 }
