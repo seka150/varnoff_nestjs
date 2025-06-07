@@ -13,17 +13,18 @@ export class OrderService {
     async createOrder(dto: OrderDTO): Promise<OrderDTO> {
         try {
             const createdOrder = await this.orderRepository.create({
-                userId: dto.userId,
                 length: dto.length,
-                height: dto.height,
                 width: dto.width,
-                statusId: dto.statusId,
+                height: dto.height,
+                userId: dto.userId,
+                coveringId: dto.coveringId,
                 serviceId: dto.serviceId,
-                coveringId: dto.coveringId
+                statusId: dto.statusId
             });
             return createdOrder.toJSON() as OrderDTO;
         } catch (error) {
-            throw new Error('Failed to create order')
+            console.error('Ошибка при создании заказа:', error);
+            throw new Error('Failed to create order');
         }
     }
 
